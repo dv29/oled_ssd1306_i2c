@@ -148,7 +148,9 @@ Oled.prototype._waitUntilReady = function(callback) {
         // if not busy, it's ready for callback
         callback();
       } else {
-        setTimeout(tick, 0);
+        setTimeout(function(){
+          tick(callback);
+        }, 0);
       }
     });
   }
