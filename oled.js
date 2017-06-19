@@ -153,7 +153,9 @@ Oled.prototype._waitUntilReady = function(callback) {
     });
   }
 
-  setTimeout(tick(callback), 0);
+  setTimeout(function(){
+    tick(callback);
+  }, 0);
 };
 
 // set starting position of a text string on the oled
@@ -495,7 +497,7 @@ Oled.prototype.drawLine = function(x0, y0, x1, y1, color, sync) {
 // Draw an outlined  rectangle
 Oled.prototype.drawRect = function(x, y, w, h, color, sync){
   var immed = (typeof sync === 'undefined') ? true : sync;
-  //top 
+  //top
   this.drawLine(x, y, x + w, y,color,false);
 
   //left
